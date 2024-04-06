@@ -26,9 +26,12 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
             if o in version_data:
                 del vv["Extra"]
                 version_data[o].append(vv)
-          classified_data['windows'][k] = version_data['windows']
-          classified_data['linux'][k] = version_data['linux']
-          classified_data['darwin'][k] = version_data['darwin']
+          if version_data['windows']:
+            classified_data['windows'][k] = version_data['windows']
+          if version_data['linux']:
+            classified_data['linux'][k] = version_data['linux']
+          if version_data['darwin']:
+            classified_data['darwin'][k] = version_data['darwin']
   base_name = os.path.basename(file_path)
   output_file_name = base_name.replace('.version.json', '.json')
  
