@@ -1,1 +1,1 @@
-{"windows": [{"Url": "https://cygwin.com/setup-x86_64.exe", "Arch": "amd64", "Os": "windows", "Sum": "", "SumType": ""}], "linux": [], "darwin": []}
+{"windows": {"latest": [{"Url": "https://cygwin.com/setup-x86_64.exe", "Arch": "amd64", "Os": "windows", "Sum": "", "SumType": ""}]}, "linux": {"latest": []}, "darwin": {"latest": []}}
