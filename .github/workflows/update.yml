@@ -38,8 +38,6 @@ jobs:
         cd current
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        for file in $(git diff --name-only); do
-          git add $file
-          git commit -m "Updated $file"
-          git push
-        done
+        git add .
+        git commit -m "Update"
+        git push
