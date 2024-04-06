@@ -14,7 +14,7 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
   with open(file_path, 'r') as f:
     data = json.load(f)
     print(data)
-    for k,v in data:
+    for k,v in data.items():
           print(k)
           for vv in v:
             os = vv["Os"]
