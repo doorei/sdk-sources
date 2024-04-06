@@ -19,6 +19,8 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
           "linux": [],
           "darwin": []
           }
+          if k.startswith('v'):
+            k = k.lstrip('v')
           for vv in v:
             o = vv["Os"]
             if o in version_data:
