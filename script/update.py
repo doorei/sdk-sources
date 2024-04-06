@@ -13,6 +13,7 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
   }
   with open(file_path, 'r') as f:
     data = json.load(f)
+    print(data)
     for item in data:
         for k,v in item:
           for vv in v:
