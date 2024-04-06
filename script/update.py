@@ -13,7 +13,6 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
   }
   with open(file_path, 'r') as f:
     data = json.load(f)
-    print(data)
     for k,v in data.items():
           print(k)
           for vv in v:
@@ -21,7 +20,6 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
             if o in classified_data:
                 del vv["Extra"]
                 classified_data[o].append(vv)
-  print(classified_data)
   base_name = os.path.basename(file_path)
   output_file_name = base_name.replace('.version.json', '.json')
  
