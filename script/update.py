@@ -13,9 +13,7 @@ for file_path in glob.glob(os.path.join(input_dir, '*.json')):
   }
   with open(file_path, 'r') as f:
     data = json.load(f)
-    for item in data:
-        print(item)
-        for k,v in item:
+    for k,v in data:
           for vv in v:
             os = vv["Os"]
             if os in classified_data:
