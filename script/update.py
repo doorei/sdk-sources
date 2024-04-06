@@ -7,19 +7,26 @@ output_dir = 'current'
 
 for file_path in glob.glob(os.path.join(input_dir, '*.json')):
   classified_data = {
-          "windows": [],
-          "linux": [],
-          "darwin": []
+          "windows": {},
+          "linux": {},
+          "darwin": {}
   }
   with open(file_path, 'r') as f:
     data = json.load(f)
     for k,v in data.items():
-          print(k)
+          version_data = {
+          "windows": [],
+          "linux": [],
+          "darwin": []
+          }
           for vv in v:
             o = vv["Os"]
-            if o in classified_data:
+            if o in version_data:
                 del vv["Extra"]
-                classified_data[o].append(vv)
+                version_data[o].append(vv)
+          classified_data['windows'][k] = version_data['windows']
+          classified_data['linux'][k] = version_data['linux']
+          classified_data['darwin'][k] = version_data['darwin']
   base_name = os.path.basename(file_path)
   output_file_name = base_name.replace('.version.json', '.json')
  
