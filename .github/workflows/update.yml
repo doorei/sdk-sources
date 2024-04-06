@@ -28,7 +28,7 @@ jobs:
         python-version: '3.x'
 
     - name: Process JSON
-      run: python ./script/update.py  
+      run: python ./current/script/update.py  
       env:
         INPUT_DIR: 'external'
         OUTPUT_DIR: 'current'
