@@ -1,0 +1,45 @@
+name: update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  
+  workflow_dispatch: 
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout external repository
+      uses: actions/checkout@v2
+      with:
+        repository: 'gvcgo/resources'
+        path: 'external'
+
+    - name: Checkout current repository
+      uses: actions/checkout@v2
+      with:
+        path: 'current'
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Process JSON
+      run: python script.py  # 替换为你的Python脚本的路径
+      env:
+        INPUT_DIR: 'external'
+        OUTPUT_DIR: 'current'
+
+    - name: Commit and push each file if it changed
+      run: |
+        cd current
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        for file in $(git diff --name-only); do
+          git add $file
+          git commit -m "Updated $file"
+          git push
+        done
